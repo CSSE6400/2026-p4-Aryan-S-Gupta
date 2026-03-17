@@ -19,14 +19,14 @@ provider "aws" {
 }
 
 resource "aws_instance" "hextris-server" {
-  ami             = data.aws_ami.latest.id
-  instance_type   = "t2.micro"
-  key_name        = "vockey"
-  user_data       = file("./serve-hextris.sh")
-  security_groups = [aws_security_group.hextris-server.name]
+  ami           = "ami-0c421724a94bba6d6"
+  instance_type = "t2.micro"
+  key_name      = "vockey"
   tags = {
     Name = "hextris"
   }
+  user_data       = file("./serve-hextris.sh")
+  security_groups = [aws_security_group.hextris-server.name]
 }
 
 resource "aws_security_group" "hextris-server" {
